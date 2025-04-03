@@ -1,0 +1,17 @@
+
+
+.movie__cards__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.movie__cards__card__title {
+  margin: 0;
+}
+
+.movie__cards__card__img{
+  width: 15rem;
+}
