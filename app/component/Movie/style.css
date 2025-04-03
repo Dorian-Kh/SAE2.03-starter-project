@@ -25,7 +25,14 @@
   justify-content: space-around;
   align-items: center;
   gap: 0.6rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
+.movie__cards__card:hover {
+  scale: 105%;
+}
+
 
 .movie__cards__card__title {
   margin: 0;
