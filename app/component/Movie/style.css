@@ -1,3 +1,24 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.movie__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+
+  @media (min-width: 60rem) {
+    & {
+      flex-direction: row;
+    }
+  }
+}
+
 .movie__cards__card {
   display: flex;
   flex-direction: column;
@@ -10,6 +31,6 @@
   margin: 0;
 }
 
-.movie__cards__card__img{
+.movie__cards__card__img {
   width: 15rem;
 }

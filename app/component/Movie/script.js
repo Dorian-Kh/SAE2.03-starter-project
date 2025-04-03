@@ -6,14 +6,14 @@ let templateCards = await templateFile2.text();
 
 let MovieCard = {};
 
-MovieCard.format = function (MovieCard) {
+MovieCard.format = function (obj) {
   let html = template;
   let cardsHTML="";
   for(let c of obj){
     let card = templateCards;
     card = card.replace("{{image}}", c.image);
     card = card.replace("{{name}}", c.name);
-    cardHTML+=card;
+    cardsHTML+=card;
   }
   html=html.replace("{{cards}}", cardsHTML);
   return html;

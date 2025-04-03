@@ -5,25 +5,15 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/NavBar/style.css" layer(components);
+@import "../component/Movie/style.css" layer(components);
 
 
-.movie {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .movie__cards{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2rem;
-  
-    @media (min-width: 60rem) {
-      & {
-        flex-direction: row;
-      }
-    }
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2rem;
+
+  color: rgb(199, 199, 199);
+  background-color: rgb(10, 5, 27);
+}
