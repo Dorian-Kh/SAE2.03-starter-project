@@ -3,14 +3,9 @@ let template = await templateFile.text();
 
 let Form = {};
 
-Form.format = function (obj) {
+Form.format = function (handler) {
   let html = template;
-  let formHTML="";
-  for(let c of obj){
-    let card = template;
-    card = card.replace("{{form}}", c.image);
-    formHTML+=card;
-  }
+  html = html.replace("{{handler}}", handler);
   return html;
 };
 

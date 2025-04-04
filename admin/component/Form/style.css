@@ -3,9 +3,34 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.form__input {
-  background-color: red;
+.form__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.02rem;
+}
+
+.form__input{
+  width: 20rem;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.form__bouton {
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-green-dark);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form__bouton:hover {
+  scale: 99%;
+  box-shadow: inset 0 0 0.5rem 0.3rem var(--color-shadow);
 }

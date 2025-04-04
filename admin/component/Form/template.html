@@ -1,3 +1,31 @@
 <div class="form">
-  <form class="form__input">Entrer texte...</form>
+  <form id="Form" class="addMovie__form">
+    <div class="form__list">
+      <input required class="form__input" type="text" name="name" placeholder="Titre du film" required><br>
+      <input required class="form__input" type="text" name="director" placeholder="Réalisateur du film" required><br>
+      <input required class="form__input" type="number" name="year" placeholder="Année de sortie" required><br>
+      <input required class="form__input" type="number" name="length" placeholder="Durée en minutes" required><br>
+      <input required class="form__input" type="text" name="description" placeholder="Description ou synopsis"
+        required><br>
+
+      <select required class="form__input" type="text" name="category" placeholder="Catégorie">
+        <option value="" disabled selected>Sélectionner une catégorie</option>
+        <option value="1">Action</option>
+        <option value="2">Comédie</option>
+        <option value="3">Drame</option>
+        <option value="4">Science-fiction</option>
+        <option value="5">Animation</option>
+        <option value="6">Thriller</option>
+        <option value="7">Horreur</option>
+        <option value="8">Aventure</option>
+        <option value="9">Fantaisie</option>
+        <option value="10">Documentaire</option>
+      </select>
+
+      <input required class="form__input" type="text" name="image" placeholder="Image du film" required><br>
+      <input required class="form__input" type="url" name="trailer" placeholder="URL du trailer" required><br>
+      <input required class="form__input" type="number" name="min_age" placeholder="Restrictions d'âge" required><br>
+    </div>
+    <input class="form__button" onclick="{{handler}}" type="button" value="Valider" name="todo" required><br>
+  </form>
 </div>

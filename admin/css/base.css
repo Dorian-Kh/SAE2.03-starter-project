@@ -6,3 +6,14 @@
 
 @import "../component/Log/style.css" layer(components);
 @import "../component/Form/style.css" layer(components);
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    color: var(--color-gray-light);
+    background-color: var(--color-purple);
+}
