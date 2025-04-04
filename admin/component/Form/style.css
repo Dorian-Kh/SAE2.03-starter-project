@@ -1,0 +1,15 @@
+body {
+  background-color: red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form__input {
+  background-color: red;
+}

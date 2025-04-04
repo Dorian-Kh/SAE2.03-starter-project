@@ -8,9 +8,11 @@
   </head>
   <body>
     <section id="log"></section>
+    <section id="form"></section>
 
     <script type="module">
       import { Log } from "./component/Log/script.js";
+      import { Form } from "./component/Form/script.js";
 
       window.C = {};
 
@@ -18,11 +20,20 @@
         V.renderLog("Démarrage de l'application");
       };
 
+      C.start = function () {
+        V.renderForm("Démarrage de l'application");
+      };
+
       window.V = {};
 
       V.renderLog = function (txt) {
         let content = document.querySelector("#log");
         content.innerHTML = Log.format(txt);
+      };
+
+      V.renderForm = function (txt) {
+        let content = document.querySelector("#form");
+        content.innerHTML = Form.format(txt);
       };
 
       C.start();
