@@ -40,6 +40,9 @@ function addMoviesController(){
     $trailer = $_REQUEST['trailer'];
     $min_age = $_REQUEST['min_age'];
 
+    if (empty($name) || empty($director) || empty($year) || empty($length) || empty($description) || empty($id_category) || empty($image) || empty($trailer) || empty($min_age)) {
+    return 'Tous les champs sont obligatoires.';
+}
     // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
     $ok = addMovies($name, $director, $year, $length, $description, $id_category, $image, $trailer, $min_age);
     // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
