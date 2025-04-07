@@ -17,4 +17,8 @@ DataMovies.requestMovies = async function(){
     return data;
 }
 
+DataMovie.requestMovieDetails = async function() {
+    
+}
+
 export {DataMovies};

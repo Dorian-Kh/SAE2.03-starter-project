@@ -10,14 +10,13 @@
 
 <body>
   <header id="header"></header>
-
   <section id="content"></section>
-
-  <section id="movie"></section>
+  <section id="page"></section>
 
   <script type="module">
     import { NavBar } from "./component/NavBar/script.js";
     import { MovieCard } from "./component/Movie/script.js";
+    import { MoviePage } from "./component/MoviePage/script.js";
     import { DataMovies } from "./data/dataMovie.js";
 
     // Controleur
@@ -36,6 +35,12 @@
       V.renderMovie(data);
     }
 
+    C.handlerDetail = async function () {
+      alert(
+        "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
+      );
+    };
+
     
  C.start = function () {
       V.renderNavBar("C.handlerAbout()");
@@ -52,6 +57,11 @@
     V.renderMovie = function (data) {
       let content = document.querySelector("#content");
       content.innerHTML = MovieCard.format(data);
+    };
+
+    V.renderMoviePage = function (data) {
+      let page = document.querySelector("#page");
+      page.innerHTML = MoviePage.format(data);
     };
 
     C.start(); // Démarre l'application

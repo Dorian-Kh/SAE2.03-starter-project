@@ -24,6 +24,11 @@
   margin-bottom: 1rem;
 }
 
+.form__title {
+  display: flex;
+  justify-content: center;
+}
+
 .addMovie__form{
   display: flex;
   flex-direction: column;

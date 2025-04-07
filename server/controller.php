@@ -53,5 +53,9 @@ function addMoviesController(){
       return "Un erreur s'est produite, réessayer.";
     }
   }
-  
+
+  function takeMoviesController(){
+    $movies = getAllMovies();
+    return $movies;
+}
   
