@@ -1,9 +1,7 @@
 <container class="page">
-  <video class="page__trailer" width="640" height="360" controls>
-    <source src="{{url}}" type="video/mp4">
-  </video>
-  <h2 class="page__desc">{{titre}}</h2>
-  <img class="page__img" src="/server/images/{{image}}">
+  <iframe class="page__trailer" src="{{trailer}}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+  <h2 class="page__desc">{{name}}</h2>
+  <img class="page__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{image}}">
   <h2 class="page__desc">{{director}}</h2>
   <h2 class="page__desc">{{year}}</h2>
   <h2 class="page__desc">{{id_category}}</h2>

@@ -11,12 +11,12 @@
 <body>
   <header id="header"></header>
   <section id="content"></section>
-  <section id="page"></section>
+  <section id="details"></section>
 
   <script type="module">
     import { NavBar } from "./component/NavBar/script.js";
     import { MovieCard } from "./component/Movie/script.js";
-    import { MoviePage } from "./component/MoviePage/script.js";
+    import { MovieDetails } from "./component/MovieDetails/script.js";
     import { DataMovies } from "./data/dataMovie.js";
 
     // Controleur
@@ -30,21 +30,21 @@
       );
     };
 
-    C.getAllMovies = async function (){
+    C.getAllMovies = async function () {
       let data = await DataMovies.requestMovies();
       V.renderMovie(data);
-    }
-
-    C.handlerDetail = async function () {
-      alert(
-        "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-      );
     };
 
-    
- C.start = function () {
+    C.handlerDetail = async function (id) {
+      let data = await DataMovies.requestMovieDetails(id);
+      V.renderMovieDetails(data);
+    };
+
+
+    C.start = function () {
       V.renderNavBar("C.handlerAbout()");
       C.getAllMovies();
+      V.renderMovieDetails();
     };
     // Vue (contient tout ce qui est relatif à l'affichage)
     window.V = {};
@@ -53,15 +53,15 @@
       let header = document.querySelector("#header");
       header.innerHTML = NavBar.format(hAbout);
     };
-    
+
     V.renderMovie = function (data) {
       let content = document.querySelector("#content");
       content.innerHTML = MovieCard.format(data);
     };
 
-    V.renderMoviePage = function (data) {
-      let page = document.querySelector("#page");
-      page.innerHTML = MoviePage.format(data);
+    V.renderMovieDetails = function (data) {
+      let details = document.querySelector("#content");
+      details.innerHTML = MovieDetails.format(data);
     };
 
     C.start(); // Démarre l'application

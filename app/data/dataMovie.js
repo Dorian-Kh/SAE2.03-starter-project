@@ -15,10 +15,16 @@ DataMovies.requestMovies = async function(){
     let data = await answer.json();
     // Enfin, on retourne ces données.
     return data;
-}
+};
 
-DataMovie.requestMovieDetails = async function() {
-    
-}
+
+DataMovies.requestMovieDetails = async function(id) {
+    // Envoie une requête HTTP pour récupérer les détails d'un film spécifique en fonction de son ID.
+    let answer = await fetch(HOST_URL + `/server/script.php?todo=readmoviedetails&id=${id}`);
+    // Convertit la réponse en format JSON.
+    let data = await answer.json();
+    // Retourne les données du film.
+    return data;
+};
 
 export {DataMovies};

@@ -22,8 +22,10 @@
  * Il contient les fonctions nécessaires pour traiter chaque type de requête
  * et définir la réponnse à renvoyer au client.
  */
-require("controller.php");
 
+ 
+
+require("controller.php");
 /**
  * Vérifie si la variable 'todo' est définie dans la requête.
  * 
@@ -58,6 +60,10 @@ if ( isset($_REQUEST['todo']) ){
 
     case 'addMovies':
       $data = addMoviesController();
+      break;
+    
+    case 'readmoviedetails':
+      $data = readMovieDetail();
       break;
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée

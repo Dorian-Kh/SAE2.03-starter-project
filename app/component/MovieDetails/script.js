@@ -1,24 +1,20 @@
-let templateFile = await fetch("./component/MoviePage/template.html");
+let templateFile = await fetch("./component/MovieDetails/template.html");
 let template = await templateFile.text();
 
-let MoviePage = {};
+let MovieDetails = {};
 
-MoviePage.format = function (obj) {
+MovieDetails.format = function (obj) {
   let html = template;
-  let pageHTML="";
-  for(let c of obj){
-    let page = template;
-    page = page.replace("{{url}}", c.url);
-    page = page.replace("{{titre}}", c.titre);
-    page = page.replace("{{image}}", c.image);
-    page = page.replace("{{director}}", c.director);
-    page = page.replace("{{year}}", c.year);
-    page = page.replace("{{id_director}}", c.id_director);
-    page = page.replace("{{min_age}}", c.min_age);
-    pageHTML+=page;
-  }
-  html=html.replace("{{page}}", pageHTML);
+    html = html.replace("{{name}}", obj.name);
+    html = html.replace("{{year}}", obj.year);
+    html = html.replace("{{length}}", obj.length);
+    html = html.replace("{{description}}", obj.description);
+    html = html.replace("{{director}}", obj.director);
+    html = html.replace("{{id_category}}", obj.id_category);
+    html = html.replace("{{image}}", obj.image);
+    html = html.replace("{{trailer}}", obj.trailer);
+    html = html.replace("{{min_age}}", obj.min_age);
   return html;
 };
 
-export { MoviePage };
+export { MovieDetails };

@@ -21,6 +21,7 @@
 require("model.php");
 
 function readMoviesController(){
+ 
     $movies = getAllMovies();
     return $movies;
 }
@@ -41,8 +42,8 @@ function addMoviesController(){
     $min_age = $_REQUEST['min_age'];
 
     if (empty($name) || empty($director) || empty($year) || empty($length) || empty($description) || empty($id_category) || empty($image) || empty($trailer) || empty($min_age)) {
-    return 'Tous les champs sont obligatoires.';
-}
+      return 'Tous les champs sont obligatoires.';
+    }
     // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
     $ok = addMovies($name, $director, $year, $length, $description, $id_category, $image, $trailer, $min_age);
     // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
@@ -52,10 +53,22 @@ function addMoviesController(){
     else{
       return "Un erreur s'est produite, réessayer.";
     }
+}
+
+
+function readMovieDetail() {
+  $id = $_REQUEST['id'] ?? null;
+
+  if (empty($id)) {
+    return "L'identifiant du film est requis.";
   }
 
-  function takeMoviesController(){
-    $movies = getAllMovies();
-    return $movies;
+  $movie = getMovieById($id);
+
+  if ($movie) {
+    return $movie;
+  } else {
+    return "Aucun film trouvé avec cet identifiant.";
+  }
 }
-  
+
