@@ -1,9 +1,7 @@
-<container class="page">
-  <iframe class="page__trailer" src="{{trailer}}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-  <h2 class="page__desc">{{name}}</h2>
-  <img class="page__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{image}}">
-  <h2 class="page__desc">{{director}}</h2>
-  <h2 class="page__desc">{{year}}</h2>
-  <h2 class="page__desc">{{id_category}}</h2>
-  <h2 class="page__desc">{{min_age}}</h2>
+<container class="details">
+  <iframe class="details__trailer" src="{{trailer}}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+  <h2 class="details__title">{{name}}</h2>
+  <img class="details__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{image}}">
+  <h2 class="details__desc">Réalisé par {{director}} | {{year}} en salle | {{category}} | +{{min_age}}</h2>
+  <p>{{description}}</p>
 </container>

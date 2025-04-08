@@ -72,3 +72,14 @@ function readMovieDetail() {
   }
 }
 
+function readmoviecategory() {
+  // Appelle une fonction pour récupérer toutes les catégories
+  $categories = getAllCategories();
+
+  // Vérifie si des catégories ont été trouvées
+  if ($categories) {
+    return $categories;
+  } else {
+    return "Aucune catégorie trouvée.";
+  }
+}
