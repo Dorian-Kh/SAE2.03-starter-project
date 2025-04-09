@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>SAE2.03 ADMIN</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/base.css" />
-  </head>
-  <body>
-    <section id="log"></section>
-    <section id="Form"></section>
-    <section id="Form"></section>
 
-    <script type="module">
-      import { Log } from "./component/Log/script.js";
-      import { Form } from "./component/Form/script.js";
-      import { DataMovies } from "./data/dataMovie.js";
+<head>
+  <title>SAE2.03 ADMIN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+</head>
 
-      window.C = {};
-      C.handlerAddMovie = async function(){
-            
-            // Sélectionne l'élément possédant la classe `.addMenu__form`
-            // il s'agit de l'élément <form> du composant NewMenuForm
-            let form = document.querySelector('.addMovie__form');
+<body>
+  <section id="log"></section>
+  <section id="Form"></section>
+  <section id="addProfile"></section>
 
-            let fd = new FormData(form);
-            // Attend la réponse de la fonction `DataMenu.update(fd)`
-            let res = await DataMovies.addMovies(fd);
-            // Affiche le résultat de la mise à jour dans le journal
-            V.renderLog(res);
-        }
+  <script type="module">
+    import { Log } from "./component/Log/script.js";
 
-      C.start = async function () {
-        V.renderLog("Démarrage de l'application");
-        V.renderForm("C.handlerAddMovie()");
-      };
+    import { Form } from "./component/Form/script.js";
+    import { DataMovies } from "./data/dataMovie.js";
 
-      window.V = {};
+    import { Profile } from "./component/ProfileForm/script.js";
+    import { DataProfile } from "./data/dataProfile.js";
 
-      V.renderLog = function (txt) {
-        let content = document.querySelector("#log");
-        content.innerHTML = Log.format(txt);
-      };
+    window.C = {};
+    C.handlerAddMovie = async function () {
 
-      V.renderForm = function (handler) {
-        let content = document.querySelector("#Form");
-        content.innerHTML = Form.format(handler);
-      };
+      // Sélectionne l'élément possédant la classe `.addMenu__form`
+      // il s'agit de l'élément <form> du composant NewMenuForm
+      let form = document.querySelector('.addMovie__form');
 
-      C.start();
-    </script>
-  </body>
+      let fd = new FormData(form);
+      // Attend la réponse de la fonction `DataMenu.update(fd)`
+      let res = await DataMovies.addMovies(fd);
+      // Affiche le résultat de la mise à jour dans le journal
+      V.renderLog(res);
+    }
+
+    C.handlerAddProfile = async function () {
+      let form = document.querySelector(".addProfile__form");
+
+      let fd = new FormData(form);
+      let res = await DataProfile.addProfile(fd);
+      V.renderLog(res);
+    };
+
+
+    C.start = async function () {
+      V.renderLog("Démarrage de l'application");
+      V.renderForm("C.handlerAddMovie()");
+      V.renderAddProfile("C.handlerAddProfile()");
+    };
+
+    window.V = {};
+
+    V.renderLog = function (txt) {
+      let content = document.querySelector("#log");
+      content.innerHTML = Log.format(txt);
+    };
+
+    V.renderForm = function (handler) {
+      let content = document.querySelector("#Form");
+      content.innerHTML = Form.format(handler);
+    };
+
+    V.renderAddProfile = async function (handler) {
+      let content = document.querySelector("#addProfile");
+      content.innerHTML = Profile.format(handler);
+    };
+
+    C.start();
+  </script>
+</body>
+
 </html>

@@ -26,6 +26,7 @@
     gap: 1rem;
 
     border-radius: 1.5rem;
+    border: 1px solid var(--color-white);
     background-color: var(--color-gray-dark);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;

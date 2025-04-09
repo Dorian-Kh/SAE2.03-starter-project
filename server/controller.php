@@ -76,10 +76,28 @@ function getMoviesByCategoryController() {
   // Appelle une fonction pour récupérer toutes les catégories
   $categories = getMoviesByCategory();
 
-  // Vérifie si des catégories ont été trouvées
+
   if ($categories) {
     return $categories;
   } else {
     return "Aucune catégorie trouvée.";
+  }
+}
+
+function addProfileController() {
+  $name = $_POST['name'];
+  $image = $_POST['image'];
+  $date_naissance = $_POST['date_naissance'];
+
+  if (empty($name) || empty($image) || empty($date_naissance)) {
+    return "Tous les champs sont obligatoires.";
+  }
+
+  $ok = addProfile($name, $image, $date_naissance);
+
+  if ($ok != 0) {
+      return "Le profil $name a bien été ajouté";
+  } else {
+      return "Le profil n'a pas pu être ajouté ou remplacé";
   }
 }

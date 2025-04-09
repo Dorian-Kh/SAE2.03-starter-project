@@ -120,3 +120,23 @@ function getMovieById($id){
             return false;
         }
     }
+
+    function addProfile($name, $image, $date_naissance) {
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+    
+        // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
+        $sql = "INSERT INTO Profil (name, image, date_naissance) 
+                VALUES (:name, :image, :date_naissance)";
+    
+        $stmt = $cnx->prepare($sql);
+    
+        // Liaison des paramètres
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':date_naissance', $date_naissance);
+    
+        $stmt->execute();
+        $res = $stmt->rowCount();
+        return $res; // Retourne le nombre de lignes affectées par l'opération
+    }
+    

@@ -1,1 +1,2 @@
-EXPLIQUER ICI LORSQUE L'ON CHANGE LA BDD !!!
+J'ai créé la table Profil pour l'itération 5 afin de pouvoir ajouter, modifier ou supprimer chaque profil dans cette table.
+J'ai donc ajouté l'id_profil pour y stocker sont id automatiquement sous forme d'entiers, name pour le nom du profil, image contenant le nom du fichier de l'avatar et date_naissance contenant la date de naissance de l'utilisateur.
