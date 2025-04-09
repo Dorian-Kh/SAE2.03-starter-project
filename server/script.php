@@ -35,6 +35,7 @@ require("controller.php");
  */
 if ( isset($_REQUEST['todo']) ){
 
+  
   /**
    * La fonction PHP header permet de définir l'en-tête HTTP de la réponse.
    * 
@@ -67,7 +68,7 @@ if ( isset($_REQUEST['todo']) ){
       break;
 
     case 'readmoviecategory':
-      $data = readMovieCategory();
+      $data = getMoviesByCategoryController();
       break;
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée

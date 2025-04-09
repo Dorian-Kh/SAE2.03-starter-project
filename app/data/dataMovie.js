@@ -27,9 +27,9 @@ DataMovies.requestMovieDetails = async function(id) {
     return data;
 };
 
-DataMovies.requestMovieCategory = async function(id) {
+DataMovies.requestMovieCategory = async function() {
     // Envoie une requête HTTP pour récupérer les détails d'un film spécifique en fonction de son ID.
-    let answer = await fetch(HOST_URL + `/server/script.php?todo=readmoviecategory&id=${id}`);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategory");
     // Convertit la réponse en format JSON.
     let data = await answer.json();
     // Retourne les données du film.

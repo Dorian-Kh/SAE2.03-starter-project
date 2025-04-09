@@ -72,9 +72,9 @@ function readMovieDetail() {
   }
 }
 
-function readmoviecategory() {
+function getMoviesByCategoryController() {
   // Appelle une fonction pour récupérer toutes les catégories
-  $categories = getAllCategories();
+  $categories = getMoviesByCategory();
 
   // Vérifie si des catégories ont été trouvées
   if ($categories) {

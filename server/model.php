@@ -78,7 +78,7 @@ function getMovieById($id){
         return $res; // Retourne les détails du film
 }
 
-function getMoviesByCategory() {
+    function getMoviesByCategory() {
         try {
             $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
