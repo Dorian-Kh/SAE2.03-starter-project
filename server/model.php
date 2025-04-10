@@ -153,3 +153,19 @@ function getMovieById($id){
         $res = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $res; // Retourne les résultats
     }
+
+function readOneProfile($id_profil) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL pour récupérer un profil spécifique
+    $sql = "SELECT id_profil, name, image, date_naissance FROM Profil WHERE id_profil = :id_profil";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Liaison du paramètre
+    $stmt->bindParam(':id_profil', $id_profil, PDO::PARAM_INT);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère le résultat de la requête sous forme d'objet
+    $res = $stmt->fetch(PDO::FETCH_OBJ);
+    return $res; // Retourne le résultat
+}

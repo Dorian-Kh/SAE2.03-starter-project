@@ -48,13 +48,40 @@
         let dataProfile = await DataProfile.readOne(select.value);
         C.profile = dataProfile[0];
       };
+
+
+
+
+
+
+
+    C.setProfileImage = function (imageName) {
+      const profileImage = document.querySelector("#profile-picture");
+      const defaultImage =
+        "../server/images/profil.jpg"; // Chemin de l'image par défaut
+
+      // Construit l'Name complète de l'image ou utilise l'image par défaut si newImage est vide
+      profileImage.src = imageName
+        ? `../server/images/${imageName}`
+        : defaultImage;
+    }
+
+    C.handlerProfileChange = function (selectElement) {
+      const selectedOption =
+        selectElement.options[selectElement.selectedIndex];
+      const newImage = selectedOption.dataset.img; // Récupère l'attribut data-img
+      C.setProfileImage(newImage);
+    }
+
+
+
+
     
-
-
     C.start = async function () {
       let profiles = await DataProfile.read();
       V.renderNavBar("C.handlerAbout()", profiles);
       C.getAllMovies();
+      C.setProfileImage();
     };
     // Vue (contient tout ce qui est relatif à l'affichage)
     window.V = {};

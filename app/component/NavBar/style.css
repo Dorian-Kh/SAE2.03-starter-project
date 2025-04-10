@@ -20,7 +20,34 @@
   }
 }
 
+.nav__logo {
+  width: 5rem;
+  height: 5rem;
+}
+
 .navbar__list {
   display: flex;
   flex-direction: row;
+}
+
+.navbar__profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__select {
+  width: 9rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.navbar__picture {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
