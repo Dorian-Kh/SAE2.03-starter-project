@@ -101,3 +101,15 @@ function addProfileController() {
       return "Le profil n'a pas pu être ajouté ou remplacé";
   }
 }
+
+function readControllerProfile(){
+  if (!isset($_REQUEST['id_profil'])) {
+    $profiles = readProfile(); 
+  }
+  else{
+    $id_profil = $_REQUEST['id_profil'];
+    $profiles = readOneProfile($id_profil);
+  }
+ 
+  return $profiles;
+}

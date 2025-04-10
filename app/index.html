@@ -19,10 +19,13 @@
     import { MovieCategory } from "./component/MovieCategory/script.js";
 
     import { DataMovies } from "./data/dataMovie.js";
+    import { DataProfile } from "./data/dataProfile.js";
     // Controleur
     // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
     // Une fois l'application terminée, on pourrait remettre let C.
     window.C = {};
+
+    C.profile = null;
     
     C.handlerAbout = function () {
       alert(
@@ -34,25 +37,31 @@
       let data = await DataMovies.requestMovieCategory();
       V.renderMoviesByCategory(data);
     };
-    
 
     C.handlerDetail = async function (id) {
       let data = await DataMovies.requestMovieDetails(id);
       V.renderMovieDetails(data);
     };
+
+    C.handlerProfile = async function () {
+        const select = document.querySelector("#profile-select");
+        let dataProfile = await DataProfile.readOne(select.value);
+        C.profile = dataProfile[0];
+      };
     
 
 
-    C.start = function () {
-      V.renderNavBar("C.handlerAbout()");
+    C.start = async function () {
+      let profiles = await DataProfile.read();
+      V.renderNavBar("C.handlerAbout()", profiles);
       C.getAllMovies();
     };
     // Vue (contient tout ce qui est relatif à l'affichage)
     window.V = {};
     
-    V.renderNavBar = function (hAbout) {
+    V.renderNavBar = function (hAbout, profiles) {
       let header = document.querySelector("#header");
-      header.innerHTML = NavBar.format(hAbout);
+      header.innerHTML = NavBar.format(hAbout, profiles);
     };
 
     V.renderMovie = function (data) {

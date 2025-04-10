@@ -1,6 +1,16 @@
 <nav class="navbar font-sans">
   <h1>Mmix</h1>
   <ul class="navbar__list">
+
+    <div class="navbar__profile">
+      <select id="profile-select" class="navbar__select" onchange="{{handler}}">
+        {{options}}
+      </select>
+      <img id="profile-picture" class="navbar__picture"
+        src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{avatar}}"
+        alt="Photo de profil" />
+    </div>
+
     <li class="navbar__item" onclick="{{hAbout}}">About</li>
     <li class="navbar__item" onclick="window.location.href='index.html'">Home</li>
   </ul>
