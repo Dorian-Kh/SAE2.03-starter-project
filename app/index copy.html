@@ -26,15 +26,20 @@
     window.C = {};
 
     C.profile = null;
-
+    
     C.handlerAbout = function () {
       alert(
         "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
       );
     };
-
-    C.getAllMovies = async function () {
-      let data = await DataMovies.requestMovieCategory();
+    
+    C.getAllMovies = async function (date_naissance) {
+      let data = await DataMovies.requestMovies();
+      // if (!Array.isArray(data) || data.length === 0) {
+      //     document.querySelector("#content").innerHTML =
+      //       "<p>Aucun film disponible pour votre tranche d'âge.</p>";
+      //     return;
+      //  }   
       V.renderMoviesByCategory(data);
     };
 
@@ -44,19 +49,11 @@
     };
 
     C.handlerProfile = async function () {
-      const select = document.querySelector("#profile-select");
-      let dataProfile = await DataProfile.readOne(select.value);
+        const select = document.querySelector("#profile-select");
+        let dataProfile = await DataProfile.readOne(select.value);
+        C.profile = dataProfile[0];
+      };
 
-      // C.profile = dataProfile[0];
-      // const birthDate = new Date(C.profile.date_naissance);
-      // const today = new Date();
-      // let age = today.getFullYear() - birthDate.getFullYear();
-      // const monthDiff = today.getMonth() - birthDate.getMonth();
-      // if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      //   age--;
-      // }
-      // return age;
-    };
 
     C.setProfileImage = function (imageName) {
       const profileImage = document.querySelector("#profile-picture");
@@ -76,6 +73,7 @@
       C.setProfileImage(newImage);
     }
 
+
     C.start = async function () {
       let profiles = await DataProfile.read();
       V.renderNavBar("C.handlerAbout()", profiles);
@@ -84,7 +82,7 @@
     };
     // Vue (contient tout ce qui est relatif à l'affichage)
     window.V = {};
-
+    
     V.renderNavBar = function (hAbout, profiles) {
       let header = document.querySelector("#header");
       header.innerHTML = NavBar.format(hAbout, profiles);
@@ -99,12 +97,12 @@
       let details = document.querySelector("#content");
       details.innerHTML = MovieDetails.format(data);
     };
-
+    
     V.renderMoviesByCategory = function (data) {
       let category = document.querySelector("#content");
-      content.innerHTML = data.map(MovieCategory.format).join("")
+      content.innerHTML = data.map(MovieCategory.format).join("");
     };
-
+    
     C.start(); // Démarre l'application
   </script>
 

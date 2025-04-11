@@ -78,27 +78,25 @@ function getMovieById($id){
         return $res; // Retourne les détails du film
 }
 
+    function getAge(date_naissance) {
+
+    }
+
     function getMoviesByCategory() {
         try {
             $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
     
-            // Requête SQL pour récupérer les films groupés par catégorie
-            $sql = "SELECT 
-                        Category.id AS category_id, 
-                        Category.name AS category_name, 
-                        Movie.id AS movie_id, 
-                        Movie.name AS movie_name, 
-                        Movie.image AS movie_image
-                    FROM Movie
-                    JOIN Category ON Movie.id_category = Category.id
+            $sql = "SELECT Category.id AS category_id, Category.name AS category_name, 
+                    Movie.id AS movie_id, Movie.name AS movie_name, Movie.image AS movie_image, Movie.min_age AS movie_min_age
+                    FROM Movie 
+                    INNER JOIN Category ON Movie.id_category = Category.id
                     ORDER BY Category.name, Movie.name";
     
             $stmt = $cnx->query($sql);
             $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
-    
-            // Regrouper les films par catégorie
+
             $categories = [];
             foreach ($rows as $row) {
                 if (!isset($categories[$row->category_id])) {
@@ -110,7 +108,8 @@ function getMovieById($id){
                 $categories[$row->category_id]["movies"][] = [
                     "id" => $row->movie_id,
                     "name" => $row->movie_name,
-                    "image" => $row->movie_image
+                    "image" => $row->movie_image,
+                    "min_age" => $row->movie_min_age
                 ];
             }
     
@@ -120,6 +119,7 @@ function getMovieById($id){
             return false;
         }
     }
+    
 
     function addProfile($name, $image, $date_naissance) {
         $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
@@ -155,17 +155,13 @@ function getMovieById($id){
     }
 
 function readOneProfile($id_profil) {
-    // Connexion à la base de données
     $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL pour récupérer un profil spécifique
+
     $sql = "SELECT id_profil, name, image, date_naissance FROM Profil WHERE id_profil = :id_profil";
-    // Prépare la requête SQL
+    
     $stmt = $cnx->prepare($sql);
-    // Liaison du paramètre
     $stmt->bindParam(':id_profil', $id_profil, PDO::PARAM_INT);
-    // Exécute la requête SQL
     $stmt->execute();
-    // Récupère le résultat de la requête sous forme d'objet
     $res = $stmt->fetch(PDO::FETCH_OBJ);
-    return $res; // Retourne le résultat
+    return $res;
 }

@@ -58,6 +58,7 @@ function addMoviesController(){
 
 function readMovieDetail() {
   $id = $_REQUEST['id'] ?? null;
+  
 
   if (empty($id)) {
     return "L'identifiant du film est requis.";
@@ -76,7 +77,7 @@ function getMoviesByCategoryController() {
   // Appelle une fonction pour récupérer toutes les catégories
   $categories = getMoviesByCategory();
 
-
+  
   if ($categories) {
     return $categories;
   } else {
@@ -88,7 +89,7 @@ function addProfileController() {
   $name = $_POST['name'];
   $image = $_POST['image'];
   $date_naissance = $_POST['date_naissance'];
-
+  
   if (empty($name) || empty($image) || empty($date_naissance)) {
     return "Tous les champs sont obligatoires.";
   }
