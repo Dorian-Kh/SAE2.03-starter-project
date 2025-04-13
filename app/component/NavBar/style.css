@@ -21,8 +21,10 @@
 }
 
 .nav__logo {
-  width: 5rem;
-  height: 5rem;
+  width: auto;
+  height: auto;
+  max-width: 20%;
+  max-height: 20%;
 }
 
 .navbar__list {

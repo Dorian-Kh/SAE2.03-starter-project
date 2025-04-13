@@ -7,8 +7,6 @@ NavBar.format = function (hAbout, profiles) {
   let html = template;
   html = html.replace("{{hAbout}}", hAbout);
 
-  let logo = "mmix.png";
-  html = html.replace("{{logo}}", logo);
   let options = `<option value="">Choisir un profil</option>`;
   for (let i = 0; i < profiles.length; i++) {
     let p = profiles[i];

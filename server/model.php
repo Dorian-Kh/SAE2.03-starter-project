@@ -78,8 +78,11 @@ function getMovieById($id){
         return $res; // Retourne les détails du film
 }
 
-    function getAge(date_naissance) {
-
+    function getAge($date_naissance) {
+        $today = new DateTime(); // La date d'aujourd'hui
+        $birthDate = new DateTime($date_naissance); // La date de naissance
+        $age = $today->diff($birthDate)->y; // Calcul de la différence en années
+        return $age;
     }
 
     function getMoviesByCategory() {
