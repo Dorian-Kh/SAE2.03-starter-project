@@ -46,66 +46,86 @@
     C.handlerProfile = async function () {
       const select = document.querySelector("#profile-select");
       let dataProfile = await DataProfile.readOne(select.value);
+      C.profile = dataProfile[0];
+      console.log("Profil chargé :", C.profile);
 
-      // C.profile = dataProfile[0];
-      // const birthDate = new Date(C.profile.date_naissance);
-      // const today = new Date();
-      // let age = today.getFullYear() - birthDate.getFullYear();
-      // const monthDiff = today.getMonth() - birthDate.getMonth();
-      // if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      //   age--;
-      // }
-      // return age;
+      // Calcul de l'âge du profil
+      const birthDate = new Date(C.profile.date_naissance);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      let allMovies = await DataMovies.requestMoviesCategory();
+      console.log("Films récupérés :", allMovies);
+      console.log("profil :", profile);
+
+
+      // Filtrer les films selon l’âge
+      console.log("Âge du profil :", age); // Affiche l'âge du profil
+
+      let filteredCategories = allMovies.map(category => {
+        return {
+          ...category,
+          movies: category.movies.filter(movie => {
+            console.log(`Vérifie "${movie.title}" (âge min: ${movie.min_age})`);
+            return movie.min_age <= age;
+          })
+        };
+      });
     };
 
-    C.setProfileImage = function (imageName) {
-      const profileImage = document.querySelector("#profile-picture");
-      const defaultImage =
-        "../server/images/profil.jpg"; // Chemin de l'image par défaut
+      C.setProfileImage = function (imageName) {
+        const profileImage = document.querySelector("#profile-picture");
+        const defaultImage =
+          "../server/images/profil.jpg"; // Chemin de l'image par défaut
 
-      // Construit l'Name complète de l'image ou utilise l'image par défaut si newImage est vide
-      profileImage.src = imageName
-        ? `../server/images/${imageName}`
-        : defaultImage;
-    }
+        profileImage.src = imageName
+          ? `../server/images/${imageName}`
+          : defaultImage;
+      }
 
-    C.handlerProfileChange = function (selectElement) {
-      const selectedOption =
-        selectElement.options[selectElement.selectedIndex];
-      const newImage = selectedOption.dataset.img; // Récupère l'attribut data-img
-      C.setProfileImage(newImage);
-    }
+      C.handlerProfileChange = function (selectElement) {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const newImage = selectedOption.dataset.img; // Récupère l'attribut data-img
+        C.setProfileImage(newImage);
+        C.handlerProfile();
+      }
 
-    C.start = async function () {
-      let profiles = await DataProfile.read();
-      V.renderNavBar("C.handlerAbout()", profiles);
-      C.getAllMovies();
-      C.setProfileImage();
-    };
-    // Vue (contient tout ce qui est relatif à l'affichage)
-    window.V = {};
 
-    V.renderNavBar = function (hAbout, profiles) {
-      let header = document.querySelector("#header");
-      header.innerHTML = NavBar.format(hAbout, profiles);
-    };
 
-    V.renderMovie = function (data) {
-      let content = document.querySelector("#content");
-      content.innerHTML = MovieCard.format(data);
-    };
+      C.start = async function () {
+        let profiles = await DataProfile.read();
+        V.renderNavBar("C.handlerAbout()", profiles);
+        C.getAllMovies();
+        C.setProfileImage();
+      };
+      // Vue (contient tout ce qui est relatif à l'affichage)
+      window.V = {};
 
-    V.renderMovieDetails = function (data) {
-      let details = document.querySelector("#content");
-      details.innerHTML = MovieDetails.format(data);
-    };
+      V.renderNavBar = function (hAbout, profiles) {
+        let header = document.querySelector("#header");
+        header.innerHTML = NavBar.format(hAbout, profiles);
+      };
 
-    V.renderMoviesByCategory = function (data) {
-      let category = document.querySelector("#content");
-      content.innerHTML = data.map(MovieCategory.format).join("")
-    };
+      V.renderMovie = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML = MovieCard.format(data);
+      };
 
-    C.start(); // Démarre l'application
+      V.renderMovieDetails = function (data) {
+        let details = document.querySelector("#content");
+        details.innerHTML = MovieDetails.format(data);
+      };
+
+      V.renderMoviesByCategory = function (data) {
+        let category = document.querySelector("#content");
+        content.innerHTML = data.map(MovieCategory.format).join("")
+      };
+
+      C.start(); // Démarre l'application
   </script>
 
 </body>

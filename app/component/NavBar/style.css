@@ -21,9 +21,10 @@
 }
 
 .nav__logo {
-  width: auto;
+  width: 20%;
   height: auto;
-  max-width: 20%;
+  min-width: 5rem;
+  max-width: 10rem;
   max-height: 20%;
 }
 

@@ -59,7 +59,7 @@ function addMovies($n, $d, $y, $l, $s, $c, $i, $t, $a){
         return $res; // Retourne le nombre de lignes affectées
     }
 
-function getMovieById($id){
+function getMovieById($id) {
         // Connexion à la base de données
         $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
         // Requête SQL pour récupérer les détails d'un film spécifique par son id
@@ -78,12 +78,7 @@ function getMovieById($id){
         return $res; // Retourne les détails du film
 }
 
-    function getAge($date_naissance) {
-        $today = new DateTime(); // La date d'aujourd'hui
-        $birthDate = new DateTime($date_naissance); // La date de naissance
-        $age = $today->diff($birthDate)->y; // Calcul de la différence en années
-        return $age;
-    }
+
 
     function getMoviesByCategory() {
         try {
