@@ -23,13 +23,8 @@
   border-radius: 1rem;
 }
 
-.profil__input--variant-1 {
-  margin-bottom: 1rem;
-}
-
 .profil__title {
-  display: flex;
-  justify-content: center;
+  font-size: 2rem;
 }
 
 .profil__button {

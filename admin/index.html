@@ -12,6 +12,7 @@
   <section id="log"></section>
   <section id="Form"></section>
   <section id="addProfile"></section>
+  <section id="modProfile"></section>
 
   <script type="module">
     import { Log } from "./component/Log/script.js";
@@ -22,7 +23,10 @@
     import { Profile } from "./component/ProfileForm/script.js";
     import { DataProfile } from "./data/dataProfile.js";
 
+    import { ProfileModifForm } from "./component/ProfileModifForm/script.js";
+
     window.C = {};
+
     C.handlerAddMovie = async function () {
 
       // Sélectionne l'élément possédant la classe `.addMenu__form`
@@ -44,11 +48,19 @@
       V.renderLog(res);
     };
 
+    C.handlerModProfile = async function () {
+        let form = document.querySelector(".profil-modif__form");
+        let fd = new FormData(form);
+        let res = await DataProfile.addProfile(fd);
+        V.renderLog(res);
+      };
+
 
     C.start = async function () {
       V.renderLog("Démarrage de l'application");
       V.renderForm("C.handlerAddMovie()");
       V.renderAddProfile("C.handlerAddProfile()");
+      V.renderModProfile("C.handlerModProfile()");
     };
 
     window.V = {};
@@ -67,6 +79,13 @@
       let content = document.querySelector("#addProfile");
       content.innerHTML = Profile.format(handler);
     };
+
+    V.renderModProfile = async function (handler) {
+        let content = document.querySelector("#modProfile");
+        let profiles = await DataProfile.getProfiles();
+        content.innerHTML = ProfileModifForm.format(profiles, handler);
+        ProfileModifForm.init();
+      };
 
     C.start();
   </script>

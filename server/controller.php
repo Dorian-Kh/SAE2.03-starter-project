@@ -82,24 +82,30 @@ function getMoviesByCategoryController() {
   } else {
     return "Aucune catégorie trouvée.";
   }
-}
+};
 
 function addProfileController() {
-    
-  $id_profil = isset($_REQUEST['id_profil']) ? $_REQUEST['id_profil'] : null;
-  $name = $_REQUEST['name'];
-  $image = $_REQUEST['image'];
-  $date_naissance = $_REQUEST['date_naissance'];
-
-  // Appel de la fonction addProfile déclarée dans model.php
-  $ok = addProfile($id_profil, $name, $image, $date_naissance);
-
-  if ($ok != 0) {
-      return "$name a été ajouté ou remplacé avec succès";
-  } else {
-      return "Le profil n'a pas pu être ajouté ou remplacé";
+  if (isset($_GET['todo']) && $_GET['todo'] === 'addProfile') {
+      $id_profil = $_POST['id_profil'] ?? null;
+      $name = $_POST['name'] ?? null;
+      $image = $_POST['image'] ?? null;
+      $date_naissance = $_POST['date_naissance'] ?? null;
+  
+      if (empty($name) || empty($image) || empty($date_naissance)) {
+          http_response_code(400); // Mauvaise requête
+          echo json_encode(["success" => false, "message" => "Tous les champs sont obligatoires."]);
+      }
+  
+      $ok = addProfile($id_profil, $name, $image, $date_naissance);
+  
+      if ($ok) {
+          echo json_encode(["success" => true, "message" => "Le profil $name a bien été ajouté."]);
+      } else {
+          http_response_code(500); // Erreur interne
+          echo json_encode(["success" => false, "message" => "Erreur lors de l'ajout du profil."]);
+      }
   }
-}
+  };
 
 function readControllerProfile(){
   if (!isset($_REQUEST['id_profil'])) {

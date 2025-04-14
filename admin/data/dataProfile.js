@@ -20,4 +20,10 @@ DataProfile.addProfile = async function(fdata){
     return data;
 }
 
+DataProfile.getProfiles = async function () {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readProfile");
+    let data = await answer.json();
+    return data;
+  };
+
 export {DataProfile};
