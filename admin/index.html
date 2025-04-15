@@ -23,8 +23,8 @@
     import { Profile } from "./component/ProfileForm/script.js";
     import { DataProfile } from "./data/dataProfile.js";
 
-    import { ProfileModifForm } from "./component/ProfileModifForm/script.js";
-
+    import { ProfileModForm } from "./component/ProfileModForm/script.js";
+    
     window.C = {};
 
     C.handlerAddMovie = async function () {
@@ -45,7 +45,7 @@
 
       let fd = new FormData(form);
       let res = await DataProfile.addProfile(fd);
-      V.renderLog(res);
+      V.renderLog(res.message);
     };
 
     C.handlerModProfile = async function () {
@@ -83,8 +83,8 @@
     V.renderModProfile = async function (handler) {
         let content = document.querySelector("#modProfile");
         let profiles = await DataProfile.getProfiles();
-        content.innerHTML = ProfileModifForm.format(profiles, handler);
-        ProfileModifForm.init();
+        content.innerHTML = ProfileModForm.format(profiles, handler);
+       
       };
 
     C.start();

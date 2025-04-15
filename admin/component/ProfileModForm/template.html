@@ -1,14 +1,14 @@
 <div class="menu-profile">
     <h2 class="menu-profile__title">Modifier un profil</h2>
     <form class="profil-modif__form">
-        <select id="profile-select" class="menu-profile__input" name="profile" required>
+        <select id="profile-select" class="menu-profile__input" name="profile" required  onchange="{{hProfile}}">
             <option value="">Choisir un profil existant</option>
             {{options}}
         </select>
         <input id="profile-id" type="hidden" name="id" value="">
-        <input id="profile-name" class="menu-profile__input" type="text" name="name" placeholder="Nom d'utilisateur'" required>
+        <input id="profile-name" class="menu-profile__input" type="text" name="name" placeholder="Nom d'utilisateur" required>
         <input id="profile-avatar" class="menu-profile__input" type="text" name="image" placeholder="Image">
         <input id="profile-min-age" class="menu-profile__input" type="date" name="date_naissance" placeholder="Restrictions d'âge" required>
-        <input onclick="{{handler}}" class="menu-profile__button" type="button" value="Valider" name="todo">
+        <input onclick="{{handlerMod}}" class="menu-profile__button" type="button" value="Valider" name="todo">
     </form>
 </div>

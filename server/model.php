@@ -118,23 +118,23 @@ function getMovieById($id) {
         }
     }
     
-    function addProfile($id_profil, $name, $image, $date_naissance) {
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=movies_db', 'username', 'password', [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ]);
+    function addProfile($name, $image, $date_naissance) {
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
     
-            $stmt = $db->prepare("INSERT INTO Profil (id, name, image, date_naissance) VALUES (:id, :name, :image, :date_naissance)");
-            return $stmt->execute([
-                ':id' => $id_profil,
-                ':name' => $name,
-                ':image' => $image,
-                ':date_naissance' => $date_naissance,
-            ]);
-        } catch (PDOException $e) {
-            error_log("Erreur SQL : " . $e->getMessage());
-            return false;
-        }
+        // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
+        $sql = "INSERT INTO Profil (name, image, date_naissance) 
+                VALUES (:name, :image, :date_naissance)";
+    
+        $stmt = $cnx->prepare($sql);
+    
+        // Liaison des paramètres
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':date_naissance', $date_naissance);
+    
+        $stmt->execute();
+        $res = $stmt->rowCount();
+        return $res; // Retourne le nombre de lignes affectées par l'opération
     }
     
     function readProfile() {

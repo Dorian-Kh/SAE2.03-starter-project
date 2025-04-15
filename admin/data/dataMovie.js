@@ -14,7 +14,7 @@ DataMovies.addMovies = async function(fdata){
         method: "POST",
         body: fdata
     };
-
+    
     let answer = await fetch(HOST_URL + "/server/script.php?todo=addMovies", config);
     let data = await answer.json();
     return data;

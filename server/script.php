@@ -79,6 +79,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = readControllerProfile();
       break;
 
+      case 'modProfile':
+        $data = modControllerProfile();
+        break;
+
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
       echo json_encode('[error] Unknown todo value');
       http_response_code(400); // 400 == "Bad request"
@@ -108,8 +112,6 @@ if ( isset($_REQUEST['todo']) ){
   echo json_encode($data);
   http_response_code(200); // 200 == "OK"
   exit();
-
-   
 } // fin de if ( isset($_REQUEST['todo']) )
 
 

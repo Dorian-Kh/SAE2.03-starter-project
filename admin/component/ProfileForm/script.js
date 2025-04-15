@@ -1,3 +1,4 @@
+
 let templateFile = await fetch("./component/ProfileForm/template.html");
 let template = await templateFile.text();
 
