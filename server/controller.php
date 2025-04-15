@@ -112,3 +112,25 @@ function readControllerProfile(){
  
   return $profiles;
 }
+
+
+function modControllerProfile() {
+  
+  $id_profil = intval($_POST['id_profil']);
+  $name = $_POST['name'];
+  $image = $_POST['image'];
+  $date_naissance = $_POST['date_naissance'];
+
+  error_log("Données reçues : " . print_r($_POST, true)); // Log des données reçues
+
+
+
+
+  $result = modProfile($id_profil, $name, $image, $date_naissance);
+
+  if ($result) {
+      return ["message" => "Profil modifié avec succès."];
+  } else {
+      return ["message" => "Erreur lors de la modification du profil."];
+  }
+} 

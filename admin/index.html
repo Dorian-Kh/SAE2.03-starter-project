@@ -45,13 +45,13 @@
 
       let fd = new FormData(form);
       let res = await DataProfile.addProfile(fd);
-      V.renderLog(res.message);
+      V.renderLog(res);
     };
 
     C.handlerModProfile = async function () {
         let form = document.querySelector(".profil-modif__form");
         let fd = new FormData(form);
-        let res = await DataProfile.addProfile(fd);
+        let res = await DataProfile.modProfile(fd);
         V.renderLog(res);
       };
 
@@ -80,10 +80,10 @@
       content.innerHTML = Profile.format(handler);
     };
 
-    V.renderModProfile = async function (handler) {
+    V.renderModProfile = async function (handlerMod) {
         let content = document.querySelector("#modProfile");
         let profiles = await DataProfile.getProfiles();
-        content.innerHTML = ProfileModForm.format(profiles, handler);
+        content.innerHTML = ProfileModForm.format(profiles, handlerMod);
        
       };
 

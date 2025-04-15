@@ -167,9 +167,9 @@ function modProfile($id_profil, $name, $image, $date_naissance) {
     $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD);
 
     // Utilisation de REPLACE INTO pour insérer ou remplacer une ligne
-    $sql = "REPLACE INTO Profil (id_profil, name, image, date_naissance) 
-            VALUES (:id_profil, :name, :image, :date_naissance)";
-
+    $sql = "UPDATE Profil 
+            SET name = :name, image = :image, date_naissance = :date_naissance 
+            WHERE id_profil = :id_profil";
     $stmt = $cnx->prepare($sql);
 
     // Liaison des paramètres
