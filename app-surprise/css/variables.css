@@ -2,15 +2,22 @@
 
 :root {
   /* Primitive Tokens */
-  --color-dark-black: #131313;
+  --color-dark-black: #0e0e0e;
   --color-black: hsl(253, 69%, 8%);
   --color-white: hsl(0, 0%, 100%);
   --color-gray-light: hsl(0, 0%, 80%);
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-dark: hsl(0, 0%, 20%);
   --color-purple: rgb(17, 9, 45);
+  --color-pink: #b748ab;
+  --color-green: #4d612e;
 
   --ff-sans: system-ui;
+  --fw-bold: 700;
+  --fw-regular: 500;
+  --fs-regular: 1rem;
+  --fs-large: 1.5rem;
+  --fs-extra-large: 2.2rem;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
