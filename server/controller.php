@@ -26,6 +26,8 @@ function readMoviesController(){
     return $movies;
 }
 
+
+
 function addMoviesController(){
     /* Lecture des données de formulaire
       On ne vérifie pas si les données sont valides, on suppose (faudra pas toujours...) que le client les a déjà
@@ -81,6 +83,19 @@ function getMoviesByCategoryController() {
   } else {
     return "Aucune catégorie trouvée.";
   }
+}
+
+function getMoviesByCategoryControllerSurprise() {
+  // Appelle une fonction pour récupérer toutes les catégories
+  $categories = getMoviesByCategorySurprise();
+
+  if ($categories) {
+    return $categories;
+  } else {
+    return "Aucune catégorie trouvée.";
+  }
+  error_log(print_r($categories, true));
+  return array_values($categories);
 }
 
 function addProfileController() {

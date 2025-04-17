@@ -12,17 +12,23 @@ DataMovies.requestMovies = async function(date_naissance = 18){
 
 
 DataMovies.requestMovieDetails = async function(id) {
-    // Envoie une requête HTTP pour récupérer les détails d'un film spécifique en fonction de son ID.
     let answer = await fetch(HOST_URL + `/server/script.php?todo=readmoviedetails&id=${id}`);
-    // Convertit la réponse en format JSON.
     let data = await answer.json();
-    // Retourne les données du film.
     return data;
 };
 
 DataMovies.requestMovieCategory = async function() {
     // Envoie une requête HTTP pour récupérer les détails d'un film spécifique en fonction de son ID.
     let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategory");
+    // Convertit la réponse en format JSON.
+    let data = await answer.json();
+    // Retourne les données du film.
+    return data;
+};
+
+DataMovies.requestMovieCategorySurprise = async function() {
+    // Envoie une requête HTTP pour récupérer les détails d'un film spécifique en fonction de son ID.
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readmoviecategorysurprise&date_naissance=${date_naissance}");
     // Convertit la réponse en format JSON.
     let data = await answer.json();
     // Retourne les données du film.

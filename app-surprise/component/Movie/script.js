@@ -11,14 +11,15 @@ MovieCard.format = function (obj) {
   let cardsHTML = "";
   for (let c of obj) {
     let card = templateCards;
-    card = card.replace("{{name}}", c.name);
-    card = card.replace("{{category}}", c.category);
-    card = card.replace("{{description}}", c.description);
-    card = card.replace("{{image}}", c.image);
-    card = card.replace("{{onclick}}", `C.handlerDetail(${c.id})`);
+    card = card.replaceAll("{{movie_name}}", c.movie_name);
+    card = card.replaceAll("{{category_name}}", c.category_name);
+    card = card.replaceAll("{{description}}", c.description);
+    card = card.replaceAll("{{image}}", c.image);
+    card = card.replaceAll("{{onclick}}", `C.handlerDetail(${c.id})`);
     cardsHTML += card;
   }
-  html = html.replace("{{cards}}", cardsHTML);
+  console.log("Données des films :", obj);
+  html = html.replaceAll("{{cards}}", cardsHTML);
   return html;
 };
 export { MovieCard };

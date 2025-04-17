@@ -34,7 +34,7 @@
     };
 
     C.getAllMovies = async function () {
-      let data = await DataMovies.requestMovieCategory();
+      let data = await DataMovies.requestMovieCategorySurprise();
       V.renderMoviesByCategory(data);
     };
 
@@ -58,7 +58,7 @@
         age--;
       }
 
-      let allMovies = await DataMovies.requestMovieCategory();
+      let allMovies = await DataMovies.requestMovieCategorySurprise();
       console.log("Films récupérés :", allMovies);
       console.log("profil :", C.profile);
       console.log("Âge du profil :", age);
@@ -124,7 +124,7 @@
 
     V.renderMoviesByCategory = function (data) {
       let category = document.querySelector("#content");
-      category.innerHTML = data.map(MovieCategory.format).join("")
+      category.innerHTML = data.map(MovieCategory.format).join("");
     };
 
     C.start(); // Démarre l'application

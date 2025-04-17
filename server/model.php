@@ -34,6 +34,56 @@ function getAllMovies(){
 }
 
 
+// ############################# Fonction uniquement utilisée pour l'I surprise
+function getMoviesByCategorySurprise() {
+    try {
+        $cnx = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBLOGIN, DBPWD, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
+
+        $sql = "SELECT 
+            Category.id AS category_id,
+            Category.name AS category_name,
+            Movie.id AS movie_id,
+            Movie.name AS movie_name,
+            Movie.image AS movie_image,
+            Movie.min_age AS movie_min_age,
+            Movie.description AS movie_description
+        FROM Movie 
+        INNER JOIN Category ON Movie.id_category = Category.id
+        ORDER BY Category.name, Movie.name";
+
+        $stmt = $cnx->query($sql);
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        $categories = [];
+        foreach ($rows as $row) {
+            if (!isset($categories[$row->category_id])) {
+                $categories[$row->category_id] = [
+                    "category_name" => $row->category_name,
+                    "movies" => []
+                ];
+            }
+            $categories[$row->category_id]["movies"][] = [
+                "id" => $row->movie_id,
+                "movie_name" => $row->movie_name,
+                "image" => $row->movie_image,
+                "min_age" => $row->movie_min_age,
+                "description" => $row->movie_description,
+                "category_name" => $row->category_name
+            ];
+        }
+
+        return array_values($categories);
+    } catch (Exception $e) {
+        error_log("Erreur SQL : " . $e->getMessage());
+        return false;
+    }
+}
+
+
+// ############################# Fonction uniquement utilisée pour l'I surprise
+
 function addMovies($n, $d, $y, $l, $s, $c, $i, $t, $a){
         // Connexion à la base de données
         $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 

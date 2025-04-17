@@ -70,6 +70,10 @@ if ( isset($_REQUEST['todo']) ){
     case 'readmoviecategory':
       $data = getMoviesByCategoryController();
       break;
+
+    case 'readmoviecategorysurprise':
+      $data = getMoviesByCategoryControllerSurprise();
+      break;
     
     case 'addProfile':
       $data = addProfileController();

@@ -6,11 +6,12 @@ let template = await templateFile.text();
 let MovieCategory = {};
 
 MovieCategory.format = function (category) {
+  console.log("Données de la catégorie :", category);
   let html = template;
-  html=html.replace("{{category}}", category.name);
+  html = html.replaceAll("{{category}}", category.category_name || "Catégorie inconnue");
 
   let cardHtml = MovieCard.format(category.movies || []);
-  html=html.replace("{{movies}}", cardHtml);
+  html = html.replaceAll("{{movies}}", cardHtml);
   return html;
 };
 
