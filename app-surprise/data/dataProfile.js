@@ -5,14 +5,14 @@ let HOST_URL = "../";
 let DataProfile = {};
 
 DataProfile.read = async function () {
-  let answer = await fetch(HOST_URL + "../server/script.php?todo=readProfile");
+  let answer = await fetch(HOST_URL + "server/script.php?todo=readProfile");
   
   let Profiles = await answer.json();
   return Profiles;
 };
 
 DataProfile.readOne = async function (id_profil) {
-  let answer = await fetch(HOST_URL + "../server/script.php?todo=readProfile&id_profil=" + id_profil);
+  let answer = await fetch(HOST_URL + "server/script.php?todo=readProfile&id_profil=" + id_profil);
   
   let res = await answer.json();
   return res;
