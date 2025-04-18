@@ -6,6 +6,7 @@
 
 :root {
   /* Primitive Tokens */
+  --color-dark-black: #0e0e0e;
   --color-black: hsl(253, 69%, 8%);
   --color-white: hsl(0, 0%, 100%);
   --color-grey-light: hsl(0, 0%, 80%);
