@@ -15,8 +15,8 @@
  */
 define("HOST", "localhost");
 define("DBNAME", "SAE203");
-define("DBLOGIN", "usersae203");
-define("DBPWD", "khireddine3");
+define("DBLOGIN", "localuser");
+define("DBPWD", "2006_Dorian_06");
 
 
 function getAllMovies(){
