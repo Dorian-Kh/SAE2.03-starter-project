@@ -1,12 +1,11 @@
 .category__title {
   padding: 1rem;
-  color: var(--color-black);
-  background-color: var(--color-white);
+  color: var(--color-white);
 }
 
 hr {
   border: none;
   height: 0.1rem;
   background-color: #ffffff;
-  margin: 20px 0;
+  margin: 0;
 }
