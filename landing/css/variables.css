@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'PoliceItsurprise';
+  src: url('./font/FranceTVBrown-Regular.ttf') format('truetype');
+}
+
+
+:root {
+  /* Primitive Tokens */
+  --color-dark-black: #0e0e0e;
+  --color-black: hsl(253, 69%, 8%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-grey-light: hsl(0, 0%, 80%);
+  --color-grey: hsl(0, 0%, 50%);
+  --color-grey-dark: hsl(0, 0%, 20%);
+  --color-purple: rgb(17, 9, 45);
+  --color-pink: #b748ab;
+  --color-green: #4d612e;
+  --color-green-dark: #2c381b;
+
+  --ff-sans: 'PoliceItsurprise', system-ui, sans-serif;
+  --fw-bold: 700;
+  --fw-regular: 500;
+  --fs-regular: 1rem;
+  --fs-large: 1.5rem;
+  --fs-extra-large: 2.2rem;
+  --fs-x-extra-large: 3rem;
+
+  /* Sementic Tokens */
+  --color-fg: var(--color-white);
+  --color-bg: var(--color-grey-dark);
+}
