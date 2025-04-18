@@ -1,9 +1,3 @@
-.category__carousel {
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
 
 .category__content {
   display: flex;
