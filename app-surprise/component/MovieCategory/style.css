@@ -2,8 +2,6 @@
 .category__content {
   display: flex;
   gap: 1rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
   padding: 1rem 0;
 }
 
