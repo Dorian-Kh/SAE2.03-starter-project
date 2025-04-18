@@ -1,9 +1,14 @@
 <div class="movie__cards__card" onclick="{{onclick}}">
-  <img class="movie__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{image}}" alt="Nom du film">
+  <img class="movie__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/{{image}}"
+    alt="Nom du film">
   <h3 class="movie__cards__card__title">{{movie_name}}</h3>
   <div class="movie__hover">
-    <h2 class="movie__item">{{movie_name}}</h2>
-    <h2 class="movie__item">{{category_name}}</h2>
-    <p class="movie__item">{{description}}</p>
-  </div> 
+    <h2 class="movie__title">{{movie_name}}</h2>
+    <h2 class="movie__category">{{category_name}}</h2>
+    <p class="movie__desc">{{description}}</p>
+    <div c class="movie__button">
+      <img class="movie__button__img" src="https://mmi.unilim.fr/~khireddine3/SAE2.03-starter-project/server/images/icons8-fleche-50.png" alt="fleche">
+      <h2 class="movie__button__title">Découvrir</h2>
+    </div>
+  </div>
 </div>

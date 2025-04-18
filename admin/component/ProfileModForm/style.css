@@ -5,7 +5,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 2rem 2rem 2rem;
-    background-color: var(--color-gray-dark);
+    background-color: var(--color-grey-dark);
     border: solid 1px var(--color-white);
 }
 

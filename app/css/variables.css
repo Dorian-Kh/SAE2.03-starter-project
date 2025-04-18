@@ -5,14 +5,14 @@
   --color-dark-black: #131313;
   --color-black: hsl(253, 69%, 8%);
   --color-white: hsl(0, 0%, 100%);
-  --color-gray-light: hsl(0, 0%, 80%);
-  --color-gray: hsl(0, 0%, 50%);
-  --color-gray-dark: hsl(0, 0%, 20%);
+  --color-grey-light: hsl(0, 0%, 80%);
+  --color-grey: hsl(0, 0%, 50%);
+  --color-grey-dark: hsl(0, 0%, 20%);
   --color-purple: rgb(17, 9, 45);
 
   --ff-sans: system-ui;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
-  --color-bg: var(--color-gray-dark);
+  --color-bg: var(--color-grey-dark);
 }

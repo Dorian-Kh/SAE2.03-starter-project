@@ -1,4 +1,27 @@
 body {
-  font-family: var(--ff-sans);
+  font-family: var(--ff-sans);  
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-inline: 5rem;
+  background-color: var(--color-dark-black);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding: 0 3rem 0 3rem;
+}

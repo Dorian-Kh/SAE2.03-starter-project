@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background-color: var(--color-gray-light);
+    background-color: var(--color-grey-light);
   }
 
   .movie__cards {
@@ -27,7 +27,7 @@
 
     border-radius: 1.5rem;
     border: 1px solid var(--color-white);
-    background-color: var(--color-gray-dark);
+    background-color: var(--color-grey-dark);
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     overflow: hidden;
     cursor: pointer;

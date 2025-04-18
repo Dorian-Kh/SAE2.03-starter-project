@@ -18,7 +18,6 @@ MovieCard.format = function (obj) {
     card = card.replaceAll("{{onclick}}", `C.handlerDetail(${c.id})`);
     cardsHTML += card;
   }
-  console.log("Données des films :", obj);
   html = html.replaceAll("{{cards}}", cardsHTML);
   return html;
 };

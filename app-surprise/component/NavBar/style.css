@@ -3,10 +3,6 @@
   justify-content: space-between;
   align-items: center;
   color: var(--color-fg);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
 }
 
 .navbar__logo {

@@ -6,7 +6,6 @@ let template = await templateFile.text();
 let MovieCategory = {};
 
 MovieCategory.format = function (category) {
-  console.log("Données de la catégorie :", category);
   let html = template;
   html = html.replaceAll("{{category}}", category.category_name || "Catégorie inconnue");
 

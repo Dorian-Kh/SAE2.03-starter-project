@@ -4,7 +4,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 2rem 2rem 2rem;
-  background-color: var(--color-gray-dark);
+  background-color: var(--color-grey-dark);
   border: solid 1px var(--color-white);
   gap: 0.5rem;
 }
