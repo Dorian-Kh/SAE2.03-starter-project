@@ -1,4 +1,14 @@
 body {
   font-family: var(--ff-sans);
+  margin: 0;
 }
 
+.header {
+  display: sticky;
+  top : 0;
+  z-index: 1000;
+}
+
+.content {
+  padding: 1rem;
+}
