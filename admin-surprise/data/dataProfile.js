@@ -1,0 +1,36 @@
+
+// URL où se trouve le répertoire "server" sur mmi.unilim.fr
+let HOST_URL = "..";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+
+let DataProfile = {};
+
+/**
+* @param {*} fdata La semaine pour laquelle le menu est mis à jour.
+* @returns $d Le jour pour lequel le menu est mis à jour.
+**/
+
+DataProfile.addProfile = async function(fdata){
+    let config = {
+        method: "POST",
+        body: fdata
+    };
+
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=addProfile", config);
+    let data = await answer.json();
+    return data;
+}
+
+DataProfile.getProfiles = async function () {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=readProfile");
+    let data = await answer.json();
+    return data;
+  };
+
+  DataProfile.modProfile = async function () {
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=modProfile");
+    let data = await answer.json();
+    return data;
+  };
+
+
+export {DataProfile};

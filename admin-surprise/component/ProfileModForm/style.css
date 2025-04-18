@@ -1,0 +1,42 @@
+.menu-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem 2rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-grey-dark);
+}
+
+.profil-modif__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-profile__input {
+    width: 20rem;
+    height: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.menu-profile__title {
+    font-size: 2rem;
+}
+
+.menu-profile__button {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 2rem;
+    background-color: var(--color-pink);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-profile__button:hover {
+    scale: 99%;
+}

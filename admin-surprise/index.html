@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>SAE2.03 ADMIN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+</head>
+
+<body>
+  <section id="log"></section>
+  <section id="Form"></section>
+  <section id="addProfile"></section>
+  <section id="modProfile"></section>
+
+  <script type="module">
+    import { Log } from "./component/Log/script.js";
+
+    import { Form } from "./component/Form/script.js";
+    import { DataMovies } from "./data/dataMovie.js";
+
+    import { Profile } from "./component/ProfileForm/script.js";
+    import { DataProfile } from "./data/dataProfile.js";
+
+    import { ProfileModForm } from "./component/ProfileModForm/script.js";
+    
+    window.C = {};
+
+    C.handlerAddMovie = async function () {
+
+      // Sélectionne l'élément possédant la classe `.addMenu__form`
+      // il s'agit de l'élément <form> du composant NewMenuForm
+      let form = document.querySelector('.addMovie__form');
+
+      let fd = new FormData(form);
+      // Attend la réponse de la fonction `DataMenu.update(fd)`
+      let res = await DataMovies.addMovies(fd);
+      // Affiche le résultat de la mise à jour dans le journal
+      V.renderLog(res);
+    }
+
+    C.handlerAddProfile = async function () {
+      let form = document.querySelector(".addProfile__form");
+
+      let fd = new FormData(form);
+      let res = await DataProfile.addProfile(fd);
+      V.renderLog(res);
+    };
+
+    C.handlerModProfile = async function () {
+        let form = document.querySelector(".profil-modif__form");
+        let fd = new FormData(form);
+        let res = await DataProfile.modProfile(fd);
+        V.renderLog(res);
+      };
+
+
+    C.start = async function () {
+      V.renderLog("Démarrage de l'application");
+      V.renderForm("C.handlerAddMovie()");
+      V.renderAddProfile("C.handlerAddProfile()");
+      V.renderModProfile("C.handlerModProfile()");
+    };
+
+    window.V = {};
+
+    V.renderLog = function (txt) {
+      let content = document.querySelector("#log");
+      content.innerHTML = Log.format(txt);
+    };
+
+    V.renderForm = function (handler) {
+      let content = document.querySelector("#Form");
+      content.innerHTML = Form.format(handler);
+    };
+
+    V.renderAddProfile = async function (handler) {
+      let content = document.querySelector("#addProfile");
+      content.innerHTML = Profile.format(handler);
+    };
+
+    V.renderModProfile = async function (handlerMod) {
+        let content = document.querySelector("#modProfile");
+        let profiles = await DataProfile.getProfiles();
+        content.innerHTML = ProfileModForm.format(profiles, handlerMod);
+       
+      };
+
+    C.start();
+  </script>
+</body>
+
+</html>

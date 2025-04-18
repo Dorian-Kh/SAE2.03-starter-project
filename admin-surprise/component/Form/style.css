@@ -1,0 +1,52 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__input{
+  width: 20rem;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.form__input--variant-1 {
+  margin-bottom: 1rem;
+}
+
+.form__title {
+  font-size: 2rem;
+}
+
+.addMovie__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem 2rem;
+
+  border-radius: 1rem;
+  background-color: var(--color-grey-dark);
+}
+
+.form__button {
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 2rem;
+  background-color: var(--color-pink);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form__button:hover {
+  scale: 99%;
+}
