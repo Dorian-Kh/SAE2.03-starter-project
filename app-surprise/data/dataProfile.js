@@ -1,5 +1,5 @@
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
-let HOST_URL = "https://khireddine-sae203.mmi-limoges.fr/SAE2.03-starter-project-master";
+let HOST_URL = "../";
 
 
 let DataProfile = {};
