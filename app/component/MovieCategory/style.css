@@ -1,6 +1,7 @@
 .category__title {
   padding-bottom: 1rem;
   margin: 0;
+  font-size: var(--fs-extra-large);
   color: var(--color-white);
 }
 
@@ -11,7 +12,7 @@
 hr {
   border: none;
   height: 0.1rem;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   margin: 0;
   width: 15rem;
 }

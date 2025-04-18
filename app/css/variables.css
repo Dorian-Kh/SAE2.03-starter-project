@@ -11,6 +11,12 @@
   --color-purple: rgb(17, 9, 45);
 
   --ff-sans: system-ui;
+  --fw-bold: 700;
+  --fw-regular: 500;
+  --fs-regular: 1rem;
+  --fs-large: 1.5rem;
+  --fs-extra-large: 2.2rem;
+  --fs-x-extra-large: 3rem;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
