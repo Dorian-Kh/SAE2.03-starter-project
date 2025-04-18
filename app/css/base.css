@@ -17,5 +17,5 @@ body {
   gap: 2rem;
 
   color: var(--color-grey-light);
-  background-color: var(--color-dark-black);
+  background-color: var(--color-black);
 }

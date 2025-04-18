@@ -8,7 +8,7 @@
   --color-grey-light: hsl(0, 0%, 80%);
   --color-grey: hsl(0, 0%, 50%);
   --color-grey-dark: hsl(0, 0%, 20%);
-  --color-purple: rgb(17, 9, 45);
+  --color-purple: hsl(253, 67%, 11%);
 
   --ff-sans: system-ui;
   --fw-bold: 700;
